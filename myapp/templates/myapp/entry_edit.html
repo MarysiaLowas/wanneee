@@ -1,0 +1,23 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+    <h1>New entry</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+    	<p>
+    		{{form.summary.errors}}
+    		<label for="id_summary">Summary:</label>
+    		<input id="id_summary" maxlength="200" name="summary" type="text" value="{{form.summary.value}}" />
+    	</p>
+		<p>
+    		{{form.text.errors}}
+			<label for="id_text">Text:</label>
+			<textarea cols="40" id="id_text" name="text" rows="10"  value="{{form.text.value}}"></textarea>
+		</p>
+		<p>
+    		{{form.tags.errors}}
+			<label for="id_tags">Tags:</label>
+			<input id="id_tags" name="tags" value="{{form.tags.value}}" data-role="tagsinput"/>
+		</p>
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}	

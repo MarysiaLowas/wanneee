@@ -1,0 +1,29 @@
+
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+	<div class="intro">	
+			<h2>What do you Wanneee?</h2>
+			<p>Tell us what would you like to have in a documentation?</p>
+			<hr/>
+	</div>
+
+    <div class="row">
+		<div class="col-md-8">
+			{% for entry in entries %}
+   				<div class="entry">
+   					<div class="date">
+        				<p>created: {{ entry.created_date }}</p>
+    				</div>
+        			<h3>{{ entry.summary }}</h3>
+        			<hr/>
+        			<p>{{ entry.text|linebreaks }}</p>
+        			<p><strong>Tags:</strong> {% for tag in entry.tags.all %}<span class="label label-default">{{tag}}</span> {% endfor %}</p>
+        			<div class="author">
+        				<p>by <span>{{entry.author}}</span></p>
+    				</div>
+    			</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock content %}

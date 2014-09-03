@@ -1,0 +1,85 @@
+.page-header {
+    background-color: #01ACEB;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+.content {
+    margin-left: 40px;
+    margin-right: 40px;
+    font-family: 'Open Sans', sans;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    float: right;
+    color: #666666;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.intro {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+a {
+    color: #666666;
+    text-decoration: none;
+}
+
+.entry {
+    margin-bottom: 50px;
+}
+
+.entry h3 a, .entry h3 a:visited {
+    color: #000000;
+}
+
+hr {
+    background-color: #666666;
+    height: 1px;
+    border: 0;
+}
+
+.intro hr {
+    background-color: #e1e1e1;
+    height: 1px;
+    border: 0px;
+}
+
+.intro p {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.author {
+    font-size: small;
+}
+
+.author span {
+    color: #01ACEB;
+    font-style: italic;
+}
