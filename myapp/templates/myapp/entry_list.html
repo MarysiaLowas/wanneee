@@ -11,7 +11,8 @@
     <div class="row">
 		<div class="col-md-8">
 			{% for entry in entries %}
-   				<div class="entry">
+            <div class="panel panel-default">
+   				<div class="panel-body entry">
    					<div class="date">
         				<p>created: {{ entry.created_date }}</p>
     				</div>
@@ -23,6 +24,7 @@
         				<p>by <span>{{entry.author}}</span></p>
     				</div>
     			</div>
+            </div>
 			{% endfor %}
 		</div>
 	</div>

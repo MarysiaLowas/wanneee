@@ -93,3 +93,7 @@ hr {
     color: #01ACEB;
     font-style: italic;
 }
+
+.pony {
+    float: right;
+}
