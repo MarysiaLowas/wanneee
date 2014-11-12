@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Tag, Entry
 from .forms import EntryForm
 from django.core.urlresolvers import reverse
@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def entry_list(request):
 
-	entries = Entry.objects.order_by('created_date')
+	entries = Entry.objects.order_by('-created_date')
 	return render(request, 'myapp/entry_list.html', {'entries' : entries})
 
 @login_required
@@ -29,3 +29,8 @@ def entry_new(request):
 	else:
 		form = EntryForm()
 	return render(request, 'myapp/entry_edit.html', {'form' : form})
+
+@login_required
+def tagged_list(request,pk):
+	entries = Entry.objects.filter(tags=pk)
+	return render(request, 'myapp/entry_list.html',{'entries' : entries})
