@@ -1,29 +1,29 @@
 {% extends 'myapp/base.html' %}
 
 {% block content %}
-    <h1>New entry</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-    	<div>
-    		{{form.summary.errors}}
-            <paper-input-decorator label="Summary" floatingLabel="true">
-                <input id="id_summary" name="summary" value="{{form.summary.value|cut:'None'}}"/>   
-            </paper-input-decorator>
-    	</div>
-		<div>
-    		{{form.text.errors}}
-			<paper-input-decorator label="Text" floatingLabel="true">
-                <textarea cols="40" id="id_text" name="text" rows="10"  value="{{form.text.value}}"></textarea>
-            </paper-input-decorator>
-		</div>
-		<div>
-    		{{form.tags.errors}}
-			<input id="id_tags" name="tags" value="{{form.tags.value|cut:'None'}}" data-role="tagsinput" class="form-control" placeholder="Tags"/>
-     
-		</div>
+    <div class="row">
+        <h1>New entry</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+        	<div>
+        		{{form.summary.errors}}
+                <paper-input-decorator label="Summary" floatingLabel="true">
+                    <input id="id_summary" name="summary" value="{{form.summary.value|default:''}}"/>   
+                </paper-input-decorator>
+        	</div>
+    		<div>
+        		{{form.text.errors}}
+    			<paper-input-decorator label="Text" floatingLabel="true">
+                    <textarea cols="40" id="id_text" name="text" rows="10">{{form.text.value|default:''}}</textarea>
+                </paper-input-decorator>
+    		</div>
+    		<div>
+        		{{form.tags.errors}}
+    			<input id="id_tags" name="tags" value="{{form.tags.value|default:''}}" data-role="tagsinput" class="form-control" placeholder="Tags"/>     
+    		</div>
 
-        <button type="submit" class="save btn btn-primary">Save</button>
+            <button type="submit" class="save btn btn-primary">Save</button>
 
-    </form>
-
+        </form>
+    </div>
 
 {% endblock %}	

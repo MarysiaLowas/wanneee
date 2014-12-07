@@ -13,7 +13,7 @@
    					<div class="date">
         				<p>created: {{ entry.created_date }}</p>
     				</div>
-        			<h3>{{ entry.summary }}</h3>
+        			<h3><a href="{% url 'myapp.views.entry_details' pk=entry.pk %}">{{ entry.summary }}</a></h3>
         			<hr/>
         			<p>{{ entry.text|linebreaks }}</p>
         			<p><strong>Tags:</strong> {% for tag in entry.tags.all %}<a href="{% url 'myapp.views.tagged_list' pk=tag.pk %}"><span class="label label-default">{{tag}}</span></a> {% endfor %}</p>
