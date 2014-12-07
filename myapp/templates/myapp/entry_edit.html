@@ -3,21 +3,27 @@
 {% block content %}
     <h1>New entry</h1>
     <form method="POST" class="post-form">{% csrf_token %}
-    	<p>
+    	<div>
     		{{form.summary.errors}}
-    		<label for="id_summary">Summary:</label>
-    		<input id="id_summary" maxlength="200" name="summary" type="text" value="{{form.summary.value}}" />
-    	</p>
-		<p>
+            <paper-input-decorator label="Summary" floatingLabel="true">
+                <input id="id_summary" name="summary" value="{{form.summary.value|cut:'None'}}"/>   
+            </paper-input-decorator>
+    	</div>
+		<div>
     		{{form.text.errors}}
-			<label for="id_text">Text:</label>
-			<textarea cols="40" id="id_text" name="text" rows="10"  value="{{form.text.value}}"></textarea>
-		</p>
-		<p>
+			<paper-input-decorator label="Text" floatingLabel="true">
+                <textarea cols="40" id="id_text" name="text" rows="10"  value="{{form.text.value}}"></textarea>
+            </paper-input-decorator>
+		</div>
+		<div>
     		{{form.tags.errors}}
-			<label for="id_tags">Tags:</label>
-			<input id="id_tags" name="tags" value="{{form.tags.value}}" data-role="tagsinput"/>
-		</p>
+			<input id="id_tags" name="tags" value="{{form.tags.value|cut:'None'}}" data-role="tagsinput" class="form-control" placeholder="Tags"/>
+     
+		</div>
+
         <button type="submit" class="save btn btn-primary">Save</button>
+
     </form>
+
+
 {% endblock %}	

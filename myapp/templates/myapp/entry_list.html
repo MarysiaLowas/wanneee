@@ -3,13 +3,10 @@
 
 {% block content %}
 	<div class="intro">	
-			<!--<h2>What do you Wanneee?</h2>-->
 			<p>Tell us what is wrong with our documetation or what would you like to have there?</p>
-			<hr/>
 	</div>
 
     <div class="row">
-		<div class="col-md-8">
 			{% for entry in entries %}
             <div class="panel panel-default">
    				<div class="panel-body entry">
@@ -25,7 +22,6 @@
     				</div>
     			</div>
             </div>
-			{% endfor %}
-		</div>
+			{% endfor %}	
 	</div>
 {% endblock content %}

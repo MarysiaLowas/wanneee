@@ -13,7 +13,7 @@ class TagsField(forms.Field):
         return value.split(',')
 
     def validate(self, value):
-        "Check if value consists only of valid emails."
+        "Check if value consists only of tags."
 
         # Use the parent's handling of required fields, etc.
         super(TagsField, self).validate(value)
