@@ -119,3 +119,18 @@ hr {
     color:#666666;
     float:right;
 }
+
+.inactive {
+    color: #E5E5E5 !important;
+}
+
+.primary-button {
+    float: right;
+    background-color: #FF7F00;
+    color: white;
+}
+
+#signIn {
+    float:right;
+    color: #666;
+}

@@ -2,8 +2,22 @@ from django.shortcuts import render, get_object_or_404
 from .models import Tag, Entry
 from .forms import EntryForm
 from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+from django.contrib.auth.models import Group
+import registration.backends.simple.views
+
+class Register(registration.backends.simple.views.RegistrationView):
+	"""class that overwrite the default get_success_url"""
+	def get_success_url(self, request, user):
+		return "/"
+
+	def register(self, request, **cleaned_data):
+		user = super(Register, self).register(request, **cleaned_data)
+		user.groups.add(Group.objects.get(name = "externals"))
+		return user
+		
 
 @login_required
 def entry_list(request):
@@ -38,7 +52,7 @@ def entry_details(request,pk):
 	return render(request, 'myapp/entry_details',{'entry' : entry})
 
 
-@login_required
+@permission_required('myapp.delete_entry', raise_exception=True)
 def entry_remove(request,pk):
 	entry = get_object_or_404(Entry, pk=pk)
 	entry.delete()
@@ -48,6 +62,9 @@ def entry_remove(request,pk):
 @login_required
 def entry_edit(request,pk):
 	entry = get_object_or_404(Entry, pk=pk)
+
+	if not((request.user.has_perm('myapp.change_entry') and request.user == entry.author) or request.user.is_staff):
+		raise PermissionDenied
 
 	if request.method == "POST":
 		form = EntryForm(request.POST, instance=entry)

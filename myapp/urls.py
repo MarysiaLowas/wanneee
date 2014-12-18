@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^entry/(?P<pk>[0-9]+)/$', views.entry_details),
     url(r'^entry/(?P<pk>[0-9]+)/remove/$', views.entry_remove, name='entry_remove'),
     url(r'^entry/(?P<pk>[0-9]+)/edit/$', views.entry_edit, name='entry_edit'),
+    url(r'^accounts/register', views.Register.as_view(), name='register'),
 )

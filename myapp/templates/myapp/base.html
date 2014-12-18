@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="{% static 'css/bootstrap-tagsinput.css' %}">
 		<link rel="stylesheet" href="{% static 'css/myapp.css' %}">
 
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="{% static 'js/bootstrap-tagsinput.js' %}"></script>
 
 		<!-- Polymer-->
@@ -34,7 +34,7 @@
 				<p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)</p>
 
 				{% else %}
-	            <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><paper-fab icon="lock"></paper-fab></span></a>
+	            <a href="{% url 'register' %}" class="top-menu"><paper-fab icon="lock-open"></paper-fab></span></a>
 				{% endif %}
 			</core-toolbar>
 
@@ -45,6 +45,10 @@
 				{% endblock %}
 			</div>
 		</core-header-panel>
-
+		<script>
+   document.getElementById('submitButton').addEventListener('click', function() {
+      document.forms[0].submit(); 
+   });
+</script>
 	</body>	
 </html>

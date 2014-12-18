@@ -5,12 +5,18 @@
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-body entry">
-				<a href="{% url 'entry_remove' pk=entry.pk %}">
-					<core-icon-button icon="delete" class="small-icon"></core-icon-button>
-				</a>
-				<a href="{% url 'entry_edit' pk=entry.pk %}">
-					<core-icon-button icon="create" class="small-icon"></core-icon-button>
-				</a>
+				{% if perms.myapp.delete_entry %}
+					<a href="{% url 'entry_remove' pk=entry.pk %}">
+						<core-icon-button icon="delete" class="small-icon"></core-icon-button>
+					</a>
+				{% endif %}
+				{% if user == entry.author or user.is_staff == True %}
+					<a href="{% url 'entry_edit' pk=entry.pk %}">
+						<core-icon-button icon="create" class="small-icon"></core-icon-button>
+					</a>
+				{% else %}
+					<core-icon-button icon="create" class="small-icon inactive"></core-icon-button>
+				{% endif %}
 				<div class="date">
 					<p>created: {{ entry.created_date }}</p>
 				</div>

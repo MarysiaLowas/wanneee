@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<!-- <paper-button id="signIn">Sign In <core-icon icon="face-unlock"></core-icon><core-icon icon="arrow-forward"></core-icon></paper-button> -->
+
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
@@ -10,9 +12,8 @@
 {% csrf_token %}
 <paper-input-decorator label="{{ form.username.label }}" floatingLabel="true">{{ form.username }}</paper-input-decorator>
 <paper-input-decorator label="{{ form.password.label }}" floatingLabel="true">{{ form.password }}</paper-input-decorator>
+<paper-button id="submitButton" class="primary-button" raised>Login</paper-button>
 
-<input class="btn btn-primary" type="submit" value="Login" />
-<input type="hidden" name="next" value="{{ next }}" />
 </form>
 
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>The form is incorrect. Please check all the fields.</p>
+{% endif %}
+
+<form method="post" action="{% url 'register' %}">
+{% csrf_token %}
+
+<paper-input-decorator label="{{ form.username.label }}" floatingLabel="true">{{ form.username }}</paper-input-decorator>
+<paper-input-decorator label="{{ form.email.label }}" floatingLabel="true">{{ form.email }}</paper-input-decorator>
+<paper-input-decorator label="{{ form.password1.label }}" floatingLabel="true">{{ form.password1 }}</paper-input-decorator>
+<paper-input-decorator label="{{ form.password2.label }}" floatingLabel="true">{{ form.password2 }}</paper-input-decorator>
+<paper-button id="submitButton" class="primary-button" raised>Submit</paper-button>
+
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}
