@@ -18,7 +18,7 @@
     		</div>
     		<div>
         		{{form.tags.errors}}
-    			<input id="id_tags" name="tags" value="{{form.tags.value|default:''}}" data-role="tagsinput" class="form-control" placeholder="Tags"/>     
+    			<input id="id_tags" name="tags" value="{% if form.instance.pk %}{% for tag in form.instance.tags.all %}{{tag}},{% endfor %}{% endif %}" data-role="tagsinput" class="form-control" placeholder="Tags"/>     
     		</div>
 
             <paper-button id="submitButton" class="primary-button" raised>Save</paper-button>

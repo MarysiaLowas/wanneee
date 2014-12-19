@@ -34,12 +34,7 @@ def entry_new(request):
 			entry = form.save(commit=False)
 			entry.author = request.user
 			entry.save()
-
-			for tag_name in form.cleaned_data['tags']:
-				tag, created = Tag.objects.get_or_create(name = tag_name)
-				entry.tags.add(tag)
-
-			entry.save()
+			form.save_m2m()
 			return redirect('myapp.views.entry_list')
 	else:
 		form = EntryForm()
@@ -72,6 +67,7 @@ def entry_edit(request,pk):
 		    entry = form.save(commit=False)
 		    entry.author = request.user
 		    entry.save()
+		    form.save_m2m()
 		    return redirect('myapp.views.entry_details', pk=entry.pk)
 	else:
 	    form = EntryForm(instance=entry)

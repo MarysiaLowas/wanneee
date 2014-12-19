@@ -6,7 +6,7 @@ class Tag(models.Model):
 	"""a model representing a tag"""
 	name = models.CharField(max_length=50)
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 
@@ -19,5 +19,5 @@ class Entry(models.Model):
 	edited_date = models.DateTimeField(default=timezone.now)
 	tags = models.ManyToManyField(Tag)	
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.summary	
