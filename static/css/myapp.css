@@ -93,9 +93,11 @@ hr {
 }
 
 .intro p {
-    margin-top: 30px;
-    margin-bottom: 20px;
+/*    margin-top: 30px;
+    margin-bottom: 20px;*/
     font-size: 14px;
+    color: #666;
+    font-style: italic;
 }
 
 .row {
